@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
 // Database Configuration (passed to knex)
 var dbConfig = {
     client: 'mysql',

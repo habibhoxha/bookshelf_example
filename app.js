@@ -30,7 +30,6 @@ var Article = bookshelf.Model.extend({
     tableName: 'articles'
 });
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
