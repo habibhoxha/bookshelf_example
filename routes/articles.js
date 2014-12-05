@@ -68,7 +68,9 @@ router.post('/addarticle', function(req, res) {
     }
     else
     {
-	    new Article(article, options).save()
+    	delete article['id'];
+	    console.log(article);
+	    new Article(article).save()
 		.then(function(articles) {
 			res.send({msg: ''});
 		}).catch(function(error) {
