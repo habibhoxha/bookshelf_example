@@ -55,7 +55,7 @@ router.delete('/deletearticle/:id', function(req, res) {
  */
 router.post('/addarticle', function(req, res) {
     var article = req.body;
-    console.log(article);
+
     if( article.id > 0 )
     {
     	new Article({id: article.id}).save(article, { patch: true })
@@ -69,7 +69,6 @@ router.post('/addarticle', function(req, res) {
     else
     {
     	delete article['id'];
-	    console.log(article);
 	    new Article(article).save()
 		.then(function(articles) {
 			res.send({msg: ''});
