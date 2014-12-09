@@ -1,81 +1,61 @@
-var express = require('express');
-var router = express.Router();
+var Model = require('./../models/Article');
 
-// Database Configuration (passed to knex)
-var dbConfig = {
-    client: 'mysql',
-    connection: {
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'node_test',
-        charset: 'utf8'
-    }
+/* Save an Article */
+var saveArticle = function (req, res) {
+	console.log(req.body);
+	new Model.Article({
+		title: req.body.title,
+		body: req.body.body,
+		author: req.body.author
+	}).save()
+		.then(function (article) {
+			//console.log(article);
+			res.json(article);
+		}).catch(function (error) {
+			console.log(error);
+			res.send('An error occured');
+		});
 };
-var knex = require('knex')(dbConfig);
-var bookshelf = require('bookshelf')(knex);
 
-// Article Model
-var Article = bookshelf.Model.extend({
-    tableName: 'articles'
-});
-
-
-/*
- * GET articlelist.
- */
-router.get('/articlelist', function(req, res) {
-	new Article().fetchAll()
-	.then(function(articles) {
-		res.send(articles.toJSON());
-	}).catch(function(error) {
-		console.log(error);
-		res.send({msg: 'An error occured'});
-	});
-});
-
-/*
- * DELETE to deleteuser.
- */
-router.delete('/deletearticle/:id', function(req, res) {
-    var id = req.params.id;
-    new Article({id: id}).destroy()
-	.then(function(err) {
-		res.send({msg: ''});
-	}).catch(function(error) {
-		console.log(error);
-		res.send({msg: 'An error occured'});
-	});
-    
-});
-
-/*
- * POST to addarticle.
- */
-router.post('/addarticle', function(req, res) {
-    var article = req.body;
-
-    if( article.id > 0 )
-    {
-    	new Article({id: article.id}).save(article, { patch: true })
-		.then(function(articles) {
-			res.send({msg: ''});
-		}).catch(function(error) {
+/* Get all Articles */
+var getAllArticles = function (req, res) {
+	new Model.Article().fetchAll()
+		.then(function (articles) {
+			res.json(articles);
+		}).catch(function (error) {
 			console.log(error);
-			res.send({msg: 'An error occured'});
+			res.send('An error occured');
 		});
-    }
-    else
-    {
-    	delete article['id'];
-	    new Article(article).save()
-		.then(function(articles) {
-			res.send({msg: ''});
-		}).catch(function(error) {
-			console.log(error);
-			res.send({msg: 'An error occured'});
-		});
-	}
-});
+};
 
-module.exports = router;
+/* Delete an Article */
+var deleteArticle = function (req, res) {
+	var articleId = req.params.id;
+	new Model.Article().where('id', articleId)
+		.destroy()
+		.catch(function (error) {
+			console.log(error);
+			res.send('An error occured');
+		});
+};
+
+/* Get an Article */
+var getArticle = function (req, res) {
+	var articleId = req.params.id;
+	new Model.Article().where('id', articleId)
+		.fetch()
+		.then(function (article) {
+			res.json(article);
+		}).catch(function (error) {
+			console.log(error);
+			res.send('An error occured');
+		});
+};
+
+/* Exports all methods */
+module.exports = {
+	saveArticle: saveArticle,
+	getAllArticles: getAllArticles,
+	deleteArticle: deleteArticle,
+	getArticle: getArticle
+};

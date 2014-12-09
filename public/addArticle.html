@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="col-md-12">
+        <div ng-show="message" class="alert alert-success">{{message}}</div>
+    </div>
+    
+    <div class="col-sm-10" style="margin-left:100px">
+        <h1>Add new Article</h1>
+    </div>
+    
+    <div class="col-md-12">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="articletitle" class="col-sm-1 control-label">Title</label>
+
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="articletitle" ng-model="article.title" placeholder="Title">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="articlebody" class="col-sm-1 control-label">Body</label>
+
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="articlebody" ng-model="article.body" placeholder="Body">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="articleauthor" class="col-sm-1 control-label">Author</label>
+
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="articleauthor" ng-model="article.author" placeholder="Author">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-6">
+                    <button ng-click="addNewArticle()" class="btn btn-success">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

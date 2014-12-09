@@ -1,0 +1,26 @@
+<div class="container">
+
+    <h1>List of Articles</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Author</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="article in articles">
+            <td><a href="#/article-details/{{article.id}}" ng-click="articleDetails(article.id)">{{ article.title }}</a></td>
+            <td>{{ article.body }}</td>
+            <td>{{ article.author }}</td>
+            <td>
+                <button class="btn btn-sm btn-danger" ng-click="deleteArticle(article.id)"> Delete</button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
