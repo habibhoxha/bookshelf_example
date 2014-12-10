@@ -5,18 +5,31 @@ This simple application uses Node.js and bookshelf.js (ORM).
 
 ### File Structure
 bookshelf_example/                 	- Application root.
+
 bookshelf_example/config/          	- Configuration files.
+
 bookshelf_example/config/db.js     	- Database configuration.
+
 bookshelf_example/models/          	- Models.
+
 bookshelf_example/models/Article.js	- User model file.
+
 bookshelf_example/public/          	- Views, js, css. 
+
 bookshelf_example/routes/          	- Application Routes.
+
 bookshelf_example/routes/index.js  	- Homepage (main) routes 
+
 bookshelf_example/routes/articles.js  	- Article routes.
+
 bookshelf_example/router.js        	- Application router.
+
 node_test.sql                       - Database Table.
+
 package.json                        - npm package descriptor.
+
 server.js                           - Main application file.
+
 README.md                           - Documentation (this file)
 
 
@@ -58,6 +71,7 @@ Let's go over the files:
     
    
 3. Routes
+
 	Here we let the application know what to display.
     
     In bookshelf_example/routes/index.js we set index.html as the default view, or the main view. 
@@ -75,7 +89,6 @@ Let's go over the files:
     	module.exports.index = index;
     </pre>
     
-	
     In bookshelf_example/routes/articles.js we declare all methods we need for articles, that is getAllArticles, getArticle, saveArticle, deleteArticle. 
     
     Finally, we export these methods, so that we can use them when needed.
@@ -123,9 +136,11 @@ Let's go over the files:
     </pre>
     
 5. node_test.sql
+
 	This file contains the table structure for the database. This is to be imported into the database, not actually used by the application.
     
 6. server.js
+
 	Here's where all the magic happens.
     
     The server uses express framework, so we include express:
