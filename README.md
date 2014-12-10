@@ -64,10 +64,10 @@ Let's go over the files:
     
     This uses the package path, in order to resolve the relative path.
     <pre>
-    var path = require('path');
-    var index = function (req, res) {
-        res.sendFile(path.resolve(__dirname + '/../public/index.html'));
-    };
+        var path = require('path');
+        var index = function (req, res) {
+            res.sendFile(path.resolve(__dirname + '/../public/index.html'));
+        };
 	</pre>
 	
     The we export the main view.
