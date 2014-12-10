@@ -36,13 +36,17 @@ Let's go over the files:
 
 	In this file we declare the Article Object by extending the bookshelf built-in model. In order to do that, we first need to include bookshelf itself, so:
     
-    <pre>var bookshelf = require('./../config/db').bookshelf;</pre>
+    <pre>
+    	var bookshelf = require('./../config/db').bookshelf;
+	</pre>
     
     Now that we have bookshelf, lets declare the Article model. We need the table name, so that bookshelf knows what to build the object upon.
     
-    <pre>var User = bookshelf.Model.extend({
-    tableName: 'articles'
-});</pre>
+    <pre>
+    var User = bookshelf.Model.extend({
+        tableName: 'articles'
+    });
+    </pre>
 
 	Let's now export this model that we just declared
     
