@@ -72,7 +72,7 @@ Let's go over the files:
 	
     The we export the main view.
     <pre>
-    module.exports.index = index;
+    	module.exports.index = index;
     </pre>
     
 	
