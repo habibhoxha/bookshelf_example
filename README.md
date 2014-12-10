@@ -46,7 +46,8 @@ Let's go over the files:
 
 	Let's now export this model that we just declared
     
-    <pre>module.exports = {
+    <pre>
+    module.exports = {
     Article: Article
 };</pre>
     
@@ -105,7 +106,7 @@ Let's go over the files:
         res.sendFile(path.resolve(__dirname + '/../public/index.html'));
     };</pre>
     
-    Finally, we export all routes, so that 
+    Finally, we export all routes. 
     <pre>
     module.exports = function (app) {
         app.get('/', index.index);
@@ -115,3 +116,26 @@ Let's go over the files:
         app.get('/article/:id', article.getArticle);
     };
     </pre>
+    
+5. node_test.sql
+	This file contains the table structure for the database. This is to be imported into the database, not actually used by the application.
+    
+6. server.js
+	Here's where all the magic happens.
+    
+    The server uses express framework, so we include express:
+    <pre>var express = require('express');
+    var app = express();</pre>
+    
+    Then, we need to parse json, thus we include the body-parser:
+    <pre>var bodyParser = require('body-parser');</pre>
+    
+    and tell the app to use the body parser:
+    <pre>
+    app.use(bodyParser.json());
+    </pre>
+    
+    Finally, we also need the routes:
+    <pre>
+    require('./router')(app);</pre>
+    
