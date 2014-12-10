@@ -68,8 +68,7 @@ Let's go over the files:
         Article: Article
     }; 
     </pre>
-    
-   
+     
 3. Routes
 
 	Here we let the application know what to display.
@@ -100,7 +99,6 @@ Let's go over the files:
         getArticle: getArticle
     };
     </pre>
-
 
 4. router.js
 
