@@ -68,6 +68,50 @@ Let's go over the files:
     <pre>
     module.exports.index = index;
     </pre>
+    
 	
+    In bookshelf_example/routes/articles.js we declare all methods we need for articles, that is getAllArticles, getArticle, saveArticle, deleteArticle. 
     
+    Finally, we export these methods, so that we can use them when needed.
+    <pre>
+    module.exports = {
+        saveArticle: saveArticle,
+        getAllArticles: getAllArticles,
+        deleteArticle: deleteArticle,
+        getArticle: getArticle
+    };
+    </pre>
+
+
+4. router.js
+
+	Here we let the application know what to do on what routes.
     
+    First, we include the routes and methods from index.js and articles.js.
+    
+    <pre>
+    var article = require('./routes/articles');
+    var index = require('./routes/index');
+    </pre>
+    
+    Now that we have the methods, let's tell what to do:
+    
+    This:
+    <pre>
+    app.get('/', index.index);</pre>
+    will let the application know, that when the application opens, it should show the index file, as earlier declared in index.js
+    <pre>
+    var index = function (req, res) {
+        res.sendFile(path.resolve(__dirname + '/../public/index.html'));
+    };</pre>
+    
+    Finally, we export all routes, so that 
+    <pre>
+    module.exports = function (app) {
+        app.get('/', index.index);
+        app.post('/articles', article.saveArticle);
+        app.get('/articles', article.getAllArticles);
+        app.delete('/article/:id', article.deleteArticle);
+        app.get('/article/:id', article.getArticle);
+    };
+    </pre>
