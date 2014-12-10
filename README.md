@@ -1,5 +1,5 @@
 ## bookshelf_example
-=================
+
 ### Description
 This simple application uses Node.js and bookshelf.js (ORM).
 
