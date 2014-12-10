@@ -48,8 +48,9 @@ Let's go over the files:
     
     <pre>
     module.exports = {
-    Article: Article
-};</pre>
+        Article: Article
+    }; 
+    </pre>
     
    
 3. Routes
